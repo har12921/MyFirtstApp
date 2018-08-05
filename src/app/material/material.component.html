@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+    <tr style="font: bold;">
+      <th scope="col" >Sr.No</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Roll No</th>
+      <th scope="col">Total Marks</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let list of getarray;let i = index" 
+    [ngClass]="{'toppr': list.status=='Topper','fail':list.status=='Fail'}">
+  
+      <th scope="row"><i>{{i+1}}</i></th>
+      <td><i>{{list.name|pipeTitle}}</i></td>
+      <td><i>{{list.RollNumber}}</i></td>
+      <td><i>{{list.marks}}</i></td>
+      <td><i>{{list.status}}</i></td>
+
+
+
+          </tr>
+   
+  </tbody>
+</table>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<div class="container-fluid">
+          <!-- Page Header-->
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h4>Student Form</h4>
+                </div>
+                <div class="card-body">
+                  <form #studentForm="ngForm" (ngSubmit)="saveStudent(studentForm)">
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input type="text" placeholder="Name" onKeyPress="return ( this.value.length <20 );" name="name" [(ngModel)]="name" #namesfield="ngModel" pattern="^[a-zA-Z\s]+$"  class="form-control" required>
+                         <span class="help-block text-danger" *ngIf="namesfield.errors?.required&&namesfield.touched">Name is required</span>
+ <span class="help-block text-danger" *ngIf="namesfield.errors?.pattern&&namesfield.touched">Must Allow Only Character</span>
+                    </div>
+              <div class="form-group" [class.has-error]="lstNameControl.invalid">       
+                      <label for="lstName">Last Name</label>
+                      <input type="text" placeholder="Last Name"  onKeyPress="return ( this.value.length <20 );" name="lstName" pattern="^[a-zA-Z\s]+$" required [(ngModel)]="lstName" class="form-control"
+                       #lstNameControl="ngModel">
+                                           <span class="help-block text-danger" *ngIf="lstNameControl.errors?.required&&lstNameControl.touched">Last Name is required</span>
+ <span class="help-block text-danger" *ngIf="lstNameControl.errors?.pattern&&lstNameControl.touched">Must Allow Only Character</span>
+                   </div> <div class="form-group">       
+                      <label>Class</label>
+                      <input type="text" placeholder="class" required  name="class" 
+                      pattern="^$|^[A-Za-z0-9]+"
+ [(ngModel)]="class" class="form-control"  #className="ngModel">
+                    </div>
+
+                    <span class="help-block text-danger" *ngIf="className.errors?.required&&className.touched">Class Name is required</span>
+<span class="help-block text-danger" *ngIf="className.errors?.pattern&&className.touched">Must Allow Only AlphaNumeric</span>
+                    <div class="form-group">       
+                      <label>Year</label>
+                      <input type="number" placeholder="year" name="year" 
+                      pattern="^[2-9][0-9](?!17$)[0-9][1-9]?\d+$" required [(ngModel)]="year" class="form-control"
+                       #yearwise="ngModel"  (ngModelChange)=yearfun(year)>
+                        <span class="help-block text-danger" *ngIf="yearwise.errors?.required&&yearwise.touched">Year is required</span>
+                        <span class="help-block text-danger" *ngIf="yearwise.errors?.pattern&&yearwise.touched">Year must be greater than 2017</span>
+<!--                         <span class="help-block text-danger" >{{shomsg}}</span>
+ -->
+                    </div><div class="form-group">       
+                      <label>Percentage</label>
+                      <input type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="percentage" name="percntge" 
+                        required [(ngModel)]="percntge" class="form-control"
+                       #perctile="ngModel">
+                        <span class="help-block text-danger" *ngIf="perctile.errors?.required&&perctile.touched">Percentage is required</span>
+
+                    </div>
+                    <div class="form-group">       
+                      <button   class="btn btn-primary" [disabled]="studentForm.invalid">Signin</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+          {{studentForm.value|json}}
+</body>
+</html>
+    <!-- Side Navbar -->
+    
+           <!-- Breadcrumb-->
+     
+        
+    
